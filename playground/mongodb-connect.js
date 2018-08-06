@@ -1,5 +1,4 @@
 const { MongoClient, ObjectID } = require('mongodb');
-const Server = require('mongodb').Server
 
 MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true }, (err, client) => {
     if(err) {
