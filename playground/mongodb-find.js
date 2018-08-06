@@ -23,7 +23,7 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true
     }, (err) => {
         console.log('Unable to find users', err);
         
-    })
+    });
 
     client.close();
 });
