@@ -5,7 +5,8 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true
         return console.log('Unable to connect to mongodb server.');
     }
     console.log('Connected to mongodb server.');
-    const db = client.db('TodoApp');
+    const db = client.db('TodoApp')
+
 
     // db.collection('ToDos').find().toArray().then((doc) => {
     //     console.log(JSON.stringify(doc, undefined, 2));
