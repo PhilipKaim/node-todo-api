@@ -8,7 +8,7 @@ const todos = [{
     text: 'first todo'
 }, {
     text: 'second todo'
-}]
+}];
 
 beforeEach((done) => {
     Todo.remove({}).then(() => {
@@ -40,7 +40,7 @@ describe('POST /todos', () => {
             });
     });
 
-    it('should not creat todo with invalid body data', (done) => {
+    it('should not create todo with invalid body data', (done) => {
         request(app)
             .post('/todos')
             .send({})
