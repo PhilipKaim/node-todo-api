@@ -3,7 +3,6 @@ require('./config/config');
 var _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
-var bcrypt = require('bcryptjs');
 var { ObjectID } = require('mongodb');
 
 var { mongoose } = require('./db/mongoose');
