@@ -3,6 +3,7 @@ require('./config/config');
 var _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
+var bcrypt = require('bcryptjs');
 var { ObjectID } = require('mongodb');
 
 var { mongoose } = require('./db/mongoose');
@@ -110,6 +111,18 @@ app.post('/users', (req, res) => {
 
 app.get('/users/me', authenticate, (req, res) => {
   res.send(req.user);
+});
+
+app.post('/users/login', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+
+  User.findByCredentials(body.email, body.password).then(user => {
+    return user.generateAuthToken().then(token => {
+      res.header('x-auth', token).send(user);
+    });
+  }).catch(e => {
+    res.sendStatus(400).send(e);
+  });
 });
 
 app.listen(port, () => {
